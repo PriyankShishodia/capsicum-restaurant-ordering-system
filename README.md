@@ -38,7 +38,7 @@ The website includes multiple food categories such as:<br>
   <li>Beverages</li>
 </ul> 
 Each category contains multiple dishes with images, descriptions, prices and vegetarian indicators.<br>
-# 🛒 Shopping Cart
+<h1>🛒 Shopping Cart</h1>
 <br>
 Users can:
 <ol>
