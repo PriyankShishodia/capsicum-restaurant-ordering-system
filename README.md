@@ -73,7 +73,7 @@ Stored information can include:
 Note: This project does not currently use a backend database. Data stored in LocalStorage is specific to the user's browser/device.
 <h1>📱 Responsive Design</h1>
 The interface is designed to work across:
-<br>
+<br><br>
 <ul>
   <li>💻 Desktop</li>
   <li>💻 Laptop</li>
@@ -85,7 +85,7 @@ The layout adapts to different screen sizes for a better ordering experience.
 The objective of this project is to create a modern digital restaurant ordering experience that allows customers to conveniently browse a restaurant's menu and manage their food orders through an interactive web interface.
 <h1>🔮 Future Improvements</h1>
 Possible future enhancements include:
-<br>
+<br><br>
 <ul>
   <li>Backend integration</li>
   <li>MySQL/MongoDB database</li>
@@ -104,5 +104,5 @@ Possible future enhancements include:
 </ul>
 <h1>👩‍💻 Author</h1>
 Priyank Shishodia
-<br>
+<br><br>
 This project was developed as a web development project demonstrating frontend design, JavaScript functionality, responsive UI development, and an online restaurant ordering workflow.
