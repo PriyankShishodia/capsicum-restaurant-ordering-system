@@ -45,7 +45,7 @@ The website includes multiple food categories such as:
 Each category contains multiple dishes with images, descriptions, prices and vegetarian indicators.<br>
 <h1>🛒 Shopping Cart</h1>
 Users can:
-<br>
+<br><br>
 <ol>
   <li>Browse the menu</li>
   <li>Search for dishes</li>
