@@ -31,7 +31,7 @@ A modern and responsive restaurant food-ordering website designed for Capsicum R
 </ul>
 <h1>🍴 Menu Categories</h1>
 The website includes multiple food categories such as:
-<br>
+<br><br>
 <ul>
   <li>Bestsellers</li>
   <li>South Indian</li>
