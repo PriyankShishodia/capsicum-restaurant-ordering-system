@@ -25,3 +25,30 @@ JavaScript – Application logic and interactive functionality<br>
 Tailwind CSS – Utility-based styling<br>
 Font Awesome – Icons<br>
 LocalStorage – Client-side data persistence
+# 🍴 Menu Categories
+The website includes multiple food categories such as:<br>
+<ul>
+  <li>Bestsellers</li>
+  <li>South Indian</li>
+  <li>Starters</li>
+  <li>Main Course</li>
+  <li>Rolls</li>
+  <li>Breads</li>
+  <li>Rice</li>
+  <li>Beverages</li>
+</ul> 
+Each category contains multiple dishes with images, descriptions, prices and vegetarian indicators.
+# 🛒 Shopping Cart
+Users can:
+<ol>
+  <li>Browse the menu</li>
+  <li>Search for dishes</li>
+  <li>Add items to the cart</li>
+  <li>Change item quantities</li>
+  <li>View the order subtotal</li>
+  <li>Apply available coupons</li>
+  <li>Continue through the order confirmation flow</li>
+</ol>
+Cart information is stored using the browser's LocalStorage.
+# 🎟️ Offers & Coupons
+The application includes promotional coupon functionality that can be used during the ordering process.<br>
