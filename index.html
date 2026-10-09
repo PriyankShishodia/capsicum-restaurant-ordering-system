@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>Capsicum · It's Capsicum Time!</title>
+  <!-- Tailwind + Icons + Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Overlay -->
+  <div id="overlay" class="overlay"></div>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="modal hidden">
+    <div class="modal-content">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold text-[#1F4B2E]">Welcome to Capsicum</h2>
+        <button id="closeLoginModal" class="text-2xl text-gray-500 hover:text-gray-700">&times;</button>
+      </div>
+      <div id="mobileScreen">
+        <p class="text-xs text-gray-600 mb-2">Create your account</p>
+        <div class="mb-2">
+          <label class="text-[10px] font-medium text-gray-600">Your Name</label>
+          <input type="text" id="userNameInput" placeholder="e.g. Rajesh" class="w-full border-2 rounded-xl px-3 py-1.5 text-sm focus:border-[#1F4B2E] outline-none transition">
+        </div>
+        <p class="text-sm text-gray-600 mb-4">Enter your mobile number</p>
+        <div class="flex items-center border-2 rounded-xl px-3 py-3 mb-4 focus-within:border-[#1F4B2E] transition">
+          <span class="text-gray-500 mr-2 font-semibold">+91</span>
+          <input type="tel" id="mobileNumber" maxlength="10" placeholder="9876543210" class="w-full outline-none text-lg" autocomplete="tel">
+        </div>
+        <button id="sendOtpBtn" class="w-full bg-gradient-to-r from-[#1F4B2E] to-[#2E5A3B] text-white py-3 rounded-xl font-semibold hover:shadow-lg transition mb-3">Send OTP</button>
+        <button id="guestLoginBtn" class="w-full bg-gray-100 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-200 transition flex items-center justify-center gap-2"><i class="fas fa-user"></i> Continue as Guest</button>
+      </div>
+      <div id="otpScreen" class="hidden">
+        <p class="text-sm text-gray-600 mb-2">Enter OTP sent to <span id="displayMobile" class="font-semibold"></span></p>
+        <input type="text" id="otpInput" maxlength="6" placeholder="000000" class="otp-input w-full border-2 rounded-xl px-4 py-3 mb-4 focus:border-[#1F4B2E] outline-none text-center text-2xl tracking-widest">
+        <button id="verifyOtpBtn" class="w-full bg-gradient-to-r from-[#1F4B2E] to-[#2E5A3B] text-white py-3 rounded-xl font-semibold hover:shadow-lg transition mb-2">Verify OTP</button>
+        <button id="resendOtpBtn" class="w-full text-[#1F4B2E] font-medium text-sm hover:underline">Resend OTP</button>
+      </div>
+      <div id="profileScreen" class="hidden">
+        <div class="text-center">
+          <div class="profile-badge mx-auto text-2xl w-20 h-20 mb-3" id="profileInitial">U</div>
+          <h3 class="font-bold text-xl" id="profileName">User</h3>
+          <p class="text-gray-500 text-sm mb-4" id="profileMobile">+91-XXXXXXXXXX</p>
+          <button id="logoutBtn" class="w-full bg-red-50 text-red-600 py-2 rounded-xl font-medium hover:bg-red-100 transition">Logout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Order Confirmation Modal -->
+  <div id="orderConfirmModal" class="modal hidden">
+    <div class="modal-content text-center">
+      <div class="text-6xl mb-4 order-success-icon"></div>
+      <h3 class="font-bold text-2xl mb-2 text-[#064E3B]">Order Placed Successfully!</h3>
+      <p class="text-gray-500 text-sm mb-6">Your delicious food is being prepared</p>
+      
+      <div class="bg-gradient-to-r from-[#064E3B] to-[#059669] text-white rounded-2xl p-5 mb-4 text-left shadow-lg shadow-green-500/20">
+        <p class="text-xs opacity-80 uppercase tracking-wider font-semibold mb-1">Order Number</p>
+        <p class="text-3xl font-extrabold mb-3" id="orderNumberDisplay">#CSM001</p>
+        <div class="border-t border-white/20 pt-3 space-y-1 text-sm">
+          <p><i class="far fa-calendar mr-2"></i><span id="orderDateDisplay">01 Jan 2025</span></p>
+          <p><i class="far fa-clock mr-2"></i><span id="orderTimeDisplay">12:00 PM</span></p>
+        </div>
+      </div>
+      
+      <div class="bg-gray-50 rounded-2xl p-4 mb-4 text-left border border-gray-100">
+        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">👤 Ordered By</p>
+        <p class="font-bold text-lg text-gray-800" id="confirmUserName">User</p>
+        <p class="text-sm text-gray-600" id="confirmUserPhone">+91-XXXXXXXXXX</p>
+      </div>
+      
+      <div class="bg-gray-50 rounded-2xl p-4 mb-4 text-left border border-gray-100">
+        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">🍽️ Items</p>
+        <div id="confirmOrderItems" class="space-y-2 text-sm"></div>
+        <div class="border-t border-gray-200 pt-3 mt-3 flex justify-between font-bold text-lg">
+          <span>Total Paid</span>
+          <span id="confirmTotalAmount" class="text-[#EF4444]">₹0</span>
+        </div>
+      </div>
+      
+      <div class="bg-amber-50 rounded-2xl p-4 mb-6 border border-amber-100">
+        <p class="text-sm font-semibold text-amber-800 mb-1">⏱️ Estimated Preparation Time</p>
+        <p class="text-2xl font-bold text-amber-600" id="preparationTime">15-20 mins</p>
+      </div>
+      
+      <button id="closeOrderConfirmModal" class="w-full bg-gray-100 text-gray-700 px-6 py-3.5 rounded-xl font-bold hover:bg-gray-200 transition active:scale-95">Done</button>
+    </div>
+  </div>
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 py-3">
+      <div class="flex items-center justify-between gap-4">
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <img src="logo.png" class="logo-img">
+        </div>
+        <div class="search-container">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="searchInput" class="search-input" placeholder="Search for dishes, cuisines..." autocomplete="off">
+          <div id="searchResults" class="search-results-dropdown"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-section scroll-animate">
+    <div class="hero-slider" id="heroSlider">
+      <div class="hero-slide" style="background-image: url('hero-bg.png1.png');">
+        <!-- <div class="hero-content"><h2>Capsicum Best Food Ever</h2><p>Best Restaurant For Family & Friends</p><button class="hero-btn">Order Now →</button></div> -->
+      </div>
+      <div class="hero-slide" style="background-image: url('hero-bg.png2.png');">
+        <!-- <div class="hero-content"><h2>Best Taste Since 2000</h2><p>Authentic Place For Family Lunch & Dinner</p><button class="hero-btn">Explore Capsicum →</button></div> -->
+      </div>
+      <div class="hero-slide" style="background-image: url('hero-bg.png3.png');">
+        <!-- <div class="hero-content"><h2>Luxury Restaurant</h2><p>Organize Birthday Parties Also</p><button class="hero-btn">Grab Deal →</button></div> -->
+      </div>
+    </div>
+    <button class="hero-nav-btn prev" id="prevSlide">❮</button>
+    <button class="hero-nav-btn next" id="nextSlide">❯</button>
+    <div class="hero-dots" id="heroDots">
+      <span class="hero-dot active" data-index="0"></span>
+      <span class="hero-dot" data-index="1"></span>
+      <span class="hero-dot" data-index="2"></span>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <div class="max-w-7xl mx-auto px-4 mt-8 scroll-animate">
+    <h2 class="text-2xl font-bold text-gray-800 mb-4">Explore Our Menu</h2>
+    <div class="category-scroll" id="categoryCircles"></div>
+    <div id="subCategoryPanel" class="sub-category-panel mb-6">
+      <div class="sub-category-scroll" id="subCategoryChips"></div>
+    </div>
+  </div>
+
+  <!-- PRODUCT GRID -->
+  <main class="max-w-7xl mx-auto px-4 pb-6">
+    <div class="flex justify-between items-center mb-6 scroll-animate">
+      <h2 class="text-2xl font-bold text-gray-800" id="currentCategoryTitle">All Items</h2>
+      <span class="text-sm text-gray-500" id="itemCount">0 items</span>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="productGrid"></div>
+  </main>
+
+  <!-- FOOTER NAV -->
+  <nav class="footer-nav">
+    <div class="footer-nav-item active" data-tab="home"><span class="footer-icon">🏠</span><span class="footer-label">Home</span></div>
+    <div class="footer-nav-item" data-tab="cart" id="footerCartBtn"><span class="footer-icon">🛒</span><span class="footer-label">Cart</span><span id="cartBadgeFooter" class="cart-badge-footer">0</span></div>
+    <div class="footer-nav-item" data-tab="account" id="footerAccountBtn"><span class="footer-icon">👤</span><span class="footer-label" id="footerAccountLabel">Login</span></div>
+  </nav>
+
+  <!-- CART POPUP -->
+  <div id="cartPopup" class="cart-popup hidden">
+    <div class="cart-popup-header"><span>🛒 Your Cart</span><button id="closeCartPopupBtn" class="text-2xl hover:rotate-90 transition-transform">&times;</button></div>
+    <div class="cart-popup-body space-y-4">
+      <div class="bg-gray-50 rounded-xl p-4" id="cartUserSection">
+        <p class="text-xs text-gray-500 mb-1">Ordered By</p>
+        <p class="font-bold text-lg" id="cartUserName">Guest User</p>
+        <p class="text-sm text-gray-600" id="cartUserPhone">Login to add contact</p>
+        <button id="cartLoginPromptBtn" class="text-xs text-[#1F4B2E] font-semibold mt-1 hover:underline">Login to add details</button>
+      </div>
+      <div id="cartPopupItems" class="space-y-2 max-h-48 overflow-y-auto"></div>
+      <div class="border-t pt-3">
+        <p class="text-sm font-semibold text-gray-700 mb-2">🎟️ Coupons & Offers</p>
+        <div class="grid grid-cols-2 gap-2" id="couponList">
+          <div class="coupon-card text-center" data-coupon="WELCOME50" data-min="199"><p class="font-bold text-[#F57C00]">WELCOME50</p><p class="text-xs">₹50 off on ₹199+</p></div>
+          <div class="coupon-card text-center" data-coupon="SAVE20" data-min="99"><p class="font-bold text-[#F57C00]">SAVE20</p><p class="text-xs">20% off up to ₹60</p></div>
+        </div>
+        <div id="appliedCouponDisplay" class="hidden mt-2 p-2 bg-green-50 rounded-lg text-sm"><span class="text-green-700 font-semibold">✓ Applied: </span><span id="appliedCouponName"></span><button id="removeCouponBtn" class="text-red-500 text-xs ml-2">Remove</button></div>
+      </div>
+      <div class="border-t pt-3">
+        <p class="text-sm font-semibold text-gray-700 mb-2">✨ You Might Also Like</p>
+        <div class="flex gap-3 overflow-x-auto pb-2" id="relatedItemsContainer"></div>
+      </div>
+      <div class="border-t pt-3 bg-gray-50 rounded-xl p-4">
+        <p class="text-sm font-semibold text-gray-700 mb-2">📋 Bill Summary</p>
+        <div class="space-y-1 text-sm">
+          <div class="flex justify-between"><span>Subtotal</span><span id="billSubtotal">₹0</span></div>
+          <div class="flex justify-between"><span>GST (5%)</span><span id="billTax">₹0</span></div>
+          <div class="flex justify-between text-green-600 hidden" id="couponDiscountRow"><span>Coupon Discount</span><span id="billCouponDiscount">-₹0</span></div>
+          <div class="flex justify-between font-bold text-lg border-t pt-2 mt-2"><span>Grand Total</span><span id="billGrandTotal" class="text-[#D32F2F]">₹0</span></div>
+        </div>
+      </div>
+      <div class="bg-amber-50 rounded-xl p-3 text-center"><p class="text-sm font-semibold text-amber-800">⏱️ Estimated Preparation Time</p><p class="text-lg font-bold text-amber-600" id="estimatedPrepTime">15-20 mins</p></div>
+    </div>
+    <div class="cart-popup-footer"><button id="popupOrderNowBtn" class="w-full bg-gradient-to-r from-[#D32F2F] to-[#f44336] text-white py-4 rounded-full font-bold text-lg hover:shadow-xl transition">Place Order 🎉</button></div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
