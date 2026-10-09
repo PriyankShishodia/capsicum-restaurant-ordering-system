@@ -20,12 +20,12 @@ A modern and responsive restaurant food-ordering website designed for Capsicum R
 📦 Order confirmation interface
 # 🛠️ Technologies Used
 <ul>
-  <li>HTML5 – Website structure</li>
-  <li>CSS3 – Styling, responsive layout and animations</li>
-  <li>JavaScript – Application logic and interactive functionality
-  <li>Tailwind CSS – Utility-based styling</li>
-  <li>Font Awesome – Icons</li>
-  <li>LocalStorage – Client-side data persistence</li>
+  <li><b>HTML5</b> – Website structure</li>
+  <li><b>CSS3</b> – Styling, responsive layout and animations</li>
+  <li><b>JavaScript</b> – Application logic and interactive functionality
+  <li><b>Tailwind CSS</b> – Utility-based styling</li>
+  <li><b>Font Awesome</b> – Icons</li>
+  <li><b>LocalStorage</b> – Client-side data persistence</li>
 </ul>
 <h1>🍴 Menu Categories</h1>
 The website includes multiple food categories such as:<br>
