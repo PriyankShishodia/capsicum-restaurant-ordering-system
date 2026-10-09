@@ -38,7 +38,8 @@ The website includes multiple food categories such as:<br>
   <li>Beverages</li>
 </ul> 
 Each category contains multiple dishes with images, descriptions, prices and vegetarian indicators.<br>
-# 🛒 Shopping Cart <br>
+# 🛒 Shopping Cart
+<br>
 Users can:
 <ol>
   <li>Browse the menu</li>
@@ -50,5 +51,6 @@ Users can:
   <li>Continue through the order confirmation flow</li>
 </ol>
 Cart information is stored using the browser's LocalStorage.<br>
-# 🎟️ Offers & Coupons <br>
+# 🎟️ Offers & Coupons
+<br>
 The application includes promotional coupon functionality that can be used during the ordering process.<br>
