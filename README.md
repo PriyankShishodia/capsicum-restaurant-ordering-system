@@ -61,9 +61,9 @@ The application includes promotional coupon functionality that can be used durin
 The application validates coupon requirements before applying discounts.
 <h1>💾 Data Storage</h1>
 This project currently uses browser LocalStorage for client-side persistence.
-<br>
+<br><br>
 Stored information can include:
-<br>
+<br><br>
 <ul>
   <li>Cart items</li>
   <li>User information</li>
