@@ -30,8 +30,8 @@ A modern and responsive restaurant food-ordering website designed for Capsicum R
   <li><b>LocalStorage</b> – Client-side data persistence</li>
 </ul>
 <h1>🍴 Menu Categories</h1>
+The website includes multiple food categories such as:
 <br>
-The website includes multiple food categories such as:<br>
 <ul>
   <li>Bestsellers</li>
   <li>South Indian</li>
@@ -44,8 +44,8 @@ The website includes multiple food categories such as:<br>
 </ul> 
 Each category contains multiple dishes with images, descriptions, prices and vegetarian indicators.<br>
 <h1>🛒 Shopping Cart</h1>
-<br>
 Users can:
+<br>
 <ol>
   <li>Browse the menu</li>
   <li>Search for dishes</li>
@@ -60,7 +60,8 @@ Cart information is stored using the browser's LocalStorage.<br>
 The application includes promotional coupon functionality that can be used during the ordering process.<br>
 The application validates coupon requirements before applying discounts.
 <h1>💾 Data Storage</h1>
-This project currently uses browser LocalStorage for client-side persistence.<br>
+This project currently uses browser LocalStorage for client-side persistence.
+<br>
 Stored information can include:
 <br>
 <ul>
@@ -102,6 +103,6 @@ Possible future enhancements include:
   <li>Deployment with a custom domain</li>
 </ul>
 <h1>👩‍💻 Author</h1>
+Priyank Shishodia
 <br>
-Priyank Shishodia<br>
 This project was developed as a web development project demonstrating frontend design, JavaScript functionality, responsive UI development, and an online restaurant ordering workflow.
