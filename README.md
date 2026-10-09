@@ -27,7 +27,7 @@ A modern and responsive restaurant food-ordering website designed for Capsicum R
   <li>Font Awesome – Icons</li>
   <li>LocalStorage – Client-side data persistence</li>
 </ul>
-# 🍴 Menu Categories
+<h1>🍴 Menu Categories</h1>
 The website includes multiple food categories such as:<br>
 <ul>
   <li>Bestsellers</li>
